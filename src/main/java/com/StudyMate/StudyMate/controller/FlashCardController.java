@@ -1,9 +1,9 @@
 package com.StudyMate.StudyMate.controller;
 
 import com.StudyMate.StudyMate.model.FlashCard;
-import com.StudyMate.StudyMate.model.Flash_card_set;
-import com.StudyMate.StudyMate.model.User;
+import com.StudyMate.StudyMate.model.FlashCardSet;
 import com.StudyMate.StudyMate.repository.FlashcardRepository;
+import com.StudyMate.StudyMate.repository.FlashcardSetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,15 +15,22 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/flashcard")
-public class Controller {
+public class FlashCardController {
     private Integer setID;
     @Autowired
     FlashcardRepository flashcardRepository;
+    @Autowired
+    FlashcardSetRepository flashcardSetRepository;
 
 
-    @GetMapping("")
-    public List<FlashCard> getFlashCard() {
-        return flashcardRepository.findAll();
+    @GetMapping("/{userId}")
+    public List<FlashCard> getFlashCardByUserId(@PathVariable Long userId) {
+        List<FlashCardSet> flashCardSets = flashcardSetRepository.findFlashCardSetById(userId);
+        List<FlashCard> result = new ArrayList<>();
+        for (var flashCardSet : flashCardSets) {
+            result.addAll(flashcardRepository.findFlashCardBySetID(flashCardSet.getId()));
+        }
+        return result;
     }
 
 

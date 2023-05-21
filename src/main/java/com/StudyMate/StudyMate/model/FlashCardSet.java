@@ -6,17 +6,17 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Flash_card_set {
+public class FlashCardSet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private Integer userID;
     private String name;
 
-    public Flash_card_set() {
+    public FlashCardSet() {
     }
 
-    public Flash_card_set(Integer id, Integer userID, String name) {
+    public FlashCardSet(Integer id, Integer userID, String name) {
         this.id = id;
         this.userID = userID;
         this.name = name;
