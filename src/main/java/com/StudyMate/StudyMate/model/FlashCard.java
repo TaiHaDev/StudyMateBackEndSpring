@@ -1,4 +1,4 @@
-package com.StudyMate.StudyMate;
+package com.StudyMate.StudyMate.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -6,7 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Flash_card {
+public class FlashCard {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -14,10 +14,10 @@ public class Flash_card {
     private String content;
     private String date;
 
-    public Flash_card() {
+    public FlashCard() {
     }
 
-    public Flash_card(Integer id, Integer setID, String content, String date) {
+    public FlashCard(Integer id, Integer setID, String content, String date) {
         this.id = id;
         this.setID = setID;
         this.content = content;

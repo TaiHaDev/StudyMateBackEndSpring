@@ -1,4 +1,4 @@
-package com.StudyMate.StudyMate;
+package com.StudyMate.StudyMate.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -6,20 +6,22 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Flash_card_set {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Integer userID;
+    private String subscription;
     private String name;
+    private String email;
 
-    public Flash_card_set() {
+    public User() {
     }
 
-    public Flash_card_set(Integer id, Integer userID, String name) {
+    public User(Integer id, String subscription, String name, String email) {
         this.id = id;
-        this.userID = userID;
+        this.subscription = subscription;
         this.name = name;
+        this.email = email;
     }
 
     public Integer getId() {
@@ -30,12 +32,12 @@ public class Flash_card_set {
         this.id = id;
     }
 
-    public Integer getUserID() {
-        return userID;
+    public String getSubscription() {
+        return subscription;
     }
 
-    public void setUserID(Integer userID) {
-        this.userID = userID;
+    public void setSubscription(String subscription) {
+        this.subscription = subscription;
     }
 
     public String getName() {
@@ -44,5 +46,13 @@ public class Flash_card_set {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

@@ -1,4 +1,4 @@
-package com.StudyMate.StudyMate;
+package com.StudyMate.StudyMate.model;
 
 public class Payment {
     private Integer id;

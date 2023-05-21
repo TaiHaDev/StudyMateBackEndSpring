@@ -1,4 +1,4 @@
-package com.StudyMate.StudyMate;
+package com.StudyMate.StudyMate.model;
 
 import java.sql.Time;
 
