@@ -3,7 +3,7 @@ package com.StudyMate.StudyMate.model;
 import java.sql.Time;
 
 public class Study_record {
-    private Integer id;
+    private Long id;
     private Time date;
     private double study_time;
     private Integer userID;
@@ -11,18 +11,18 @@ public class Study_record {
     public Study_record() {
     }
 
-    public Study_record(Integer id, Time date, double study_time, Integer userID) {
+    public Study_record(Long id, Time date, double study_time, Integer userID) {
         this.id = id;
         this.date = date;
         this.study_time = study_time;
         this.userID = userID;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

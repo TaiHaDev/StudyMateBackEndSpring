@@ -1,6 +1,5 @@
 package com.StudyMate.StudyMate.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
@@ -10,7 +9,7 @@ import java.util.List;
 public class FlashCardSet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     private Integer userID;
     private String name;
 
@@ -28,11 +27,11 @@ public class FlashCardSet {
         this.flashCards = flashCards;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

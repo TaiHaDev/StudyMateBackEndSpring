@@ -1,7 +1,7 @@
 package com.StudyMate.StudyMate.model;
 
 public class Payment {
-    private Integer id;
+    private Long id;
     private Integer userID;
     private String payment_type;
     private String payment_detail;
@@ -9,18 +9,18 @@ public class Payment {
     public Payment() {
     }
 
-    public Payment(Integer id, Integer userID, String payment_type, String payment_detail) {
+    public Payment(Long id, Integer userID, String payment_type, String payment_detail) {
         this.id = id;
         this.userID = userID;
         this.payment_type = payment_type;
         this.payment_detail = payment_detail;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

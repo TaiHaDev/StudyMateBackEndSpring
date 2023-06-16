@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 public class FlashCard {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "setID")
     @JsonBackReference
@@ -18,11 +18,11 @@ public class FlashCard {
     public FlashCard() {
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -1,22 +1,22 @@
 package com.StudyMate.StudyMate.model;
 
 public class Favourite_background {
-    private Integer userID;
+    private Long userID;
     private String backgroundID;
 
     public Favourite_background() {
     }
 
-    public Favourite_background(Integer userID, String backgroundID) {
+    public Favourite_background(Long userID, String backgroundID) {
         this.userID = userID;
         this.backgroundID = backgroundID;
     }
 
-    public Integer getUserID() {
+    public Long getUserID() {
         return userID;
     }
 
-    public void setUserID(Integer userID) {
+    public void setUserID(Long userID) {
         this.userID = userID;
     }
 

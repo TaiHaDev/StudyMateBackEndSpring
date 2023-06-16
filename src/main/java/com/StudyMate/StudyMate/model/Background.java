@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 public class Background {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     @Column(nullable = false)
     private String url;
     @Column(nullable = false)
@@ -33,11 +33,11 @@ public class Background {
         this.theme = theme;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
