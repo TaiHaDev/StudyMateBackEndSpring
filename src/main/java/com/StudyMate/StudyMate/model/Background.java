@@ -7,13 +7,15 @@ import jakarta.persistence.*;
 public class Background {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     @Column(nullable = false)
     private String url;
     @Column(nullable = false)
     private String name;
     @Column(nullable = false)
     private String theme;
+    @Column(nullable = false)
+    private String pictureURL;
 
     public Background(String URL, String name, String theme) {
         this.url = URL;
@@ -33,11 +35,11 @@ public class Background {
         this.theme = theme;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
