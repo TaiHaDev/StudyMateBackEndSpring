@@ -1,27 +1,21 @@
 package com.StudyMate.StudyMate.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.*;
 
 @Entity
 public class FlashCard {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Integer setID;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "setID")
+    @JsonBackReference
+    private FlashCardSet flashCardSet;
     private String content;
     private String date;
 
     public FlashCard() {
-    }
-
-    public FlashCard(Integer id, Integer setID, String content, String date) {
-        this.id = id;
-        this.setID = setID;
-        this.content = content;
-        this.date = date;
     }
 
     public Integer getId() {
@@ -32,12 +26,12 @@ public class FlashCard {
         this.id = id;
     }
 
-    public Integer getSetID() {
-        return setID;
+    public FlashCardSet getFlashCardSet() {
+        return flashCardSet;
     }
 
-    public void setSetID(Integer setID) {
-        this.setID = setID;
+    public void setFlashCardSet(FlashCardSet flashCardSet) {
+        this.flashCardSet = flashCardSet;
     }
 
     public String getContent() {

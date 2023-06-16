@@ -1,9 +1,10 @@
 package com.StudyMate.StudyMate.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class FlashCardSet {
@@ -13,13 +14,18 @@ public class FlashCardSet {
     private Integer userID;
     private String name;
 
-    public FlashCardSet() {
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "flashCardSet")
+    @JsonManagedReference
+    private List<FlashCard> flashCards;
+    public FlashCardSet() {}
+
+
+    public List<FlashCard> getFlashCards() {
+        return flashCards;
     }
 
-    public FlashCardSet(Integer id, Integer userID, String name) {
-        this.id = id;
-        this.userID = userID;
-        this.name = name;
+    public void setFlashCards(List<FlashCard> flashCards) {
+        this.flashCards = flashCards;
     }
 
     public Integer getId() {
