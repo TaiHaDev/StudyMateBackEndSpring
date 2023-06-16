@@ -17,29 +17,18 @@ public class FlashCardSetServiceImpl implements FlashCardSetService{
         this.flashcardSetRepository = flashcardSetRepository;
     }
 
-    /**
-     * Get all the flashcard set of the current user
-     * @param userId current user id
-     * @return all flash card sets of the current user
-     */
+
     @Override
     public List<FlashCardSet> getAllSets(long userId) {
         return flashcardSetRepository.findFlashCardSetById(userId);
     }
 
-    /**
-     *
-     * @param flashCardSet
-     */
     @Override
     public void save(FlashCardSet flashCardSet) {
         flashcardSetRepository.save(flashCardSet);
     }
 
-    /**
-     *
-     * @param setId
-     */
+
     @Override
     public void delete(long setId) {
         flashcardSetRepository.deleteById(setId);
