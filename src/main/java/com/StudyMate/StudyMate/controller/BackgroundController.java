@@ -20,8 +20,6 @@ public class BackgroundController {
     }
     @PostMapping()
     public void addNewBackground(@RequestBody Background background) {
-        System.out.println("helllllldsfjkladsfjklsaklskadfkjl;");
-        System.out.println(background);
         backgroundService.save(background);
     }
     @DeleteMapping("/{backgroundId}")
