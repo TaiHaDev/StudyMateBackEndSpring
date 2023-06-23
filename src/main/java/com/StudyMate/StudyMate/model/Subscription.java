@@ -1,7 +1,7 @@
-package com.StudyMate.StudyMate;
+package com.StudyMate.StudyMate.model;
 
 public class Subscription {
-    private Integer id;
+    private Long id;
     private Integer userID;
     private String type;
     private String period;
@@ -9,18 +9,18 @@ public class Subscription {
     public Subscription() {
     }
 
-    public Subscription(Integer id, Integer userID, String type, String period) {
+    public Subscription(Long id, Integer userID, String type, String period) {
         this.id = id;
         this.userID = userID;
         this.type = type;
         this.period = period;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
