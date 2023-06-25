@@ -1,7 +1,12 @@
 package com.StudyMate.StudyMate.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+@Entity
 public class Favourite_background {
+    @Id
     private Integer userID;
+    @Id
     private String backgroundID;
 
     public Favourite_background() {
@@ -27,4 +32,5 @@ public class Favourite_background {
     public void setBackgroundID(String backgroundID) {
         this.backgroundID = backgroundID;
     }
+
 }
