@@ -1,9 +1,9 @@
 package com.StudyMate.StudyMate.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class User {
@@ -14,10 +14,16 @@ public class User {
     private String name;
     private String email;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "favourite_background")
+    @JsonManagedReference
+    private List<User> userFavouriteBackgrounds;
+
     public User() {
     }
 
-
+    public List<User> getUserFavouriteBackgrounds(){
+        return userFavouriteBackgrounds;
+    }
 
     public Integer getId() {
         return id;

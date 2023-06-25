@@ -1,7 +1,19 @@
 package com.StudyMate.StudyMate.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+
 public class Favourite_background {
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "userID")
+    @JsonBackReference
     private Integer userID;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "backgroundID")
+    @JsonBackReference
     private String backgroundID;
 
     public Favourite_background() {
