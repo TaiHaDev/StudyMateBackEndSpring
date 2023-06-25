@@ -16,12 +16,6 @@ public class FavouriteBackgroundImpl implements FavouriteBackgroundService {
         this.favouriteBackgroundRepository = favouriteBackgroundRepository;
     }
 
-
-    @Override
-    public List<Background> getAllBackgrounds(long userId) {
-        return null;
-    }
-
     @Override
     public void save(FavouriteBackground favouriteBackground) {
 
@@ -30,6 +24,12 @@ public class FavouriteBackgroundImpl implements FavouriteBackgroundService {
     @Override
     public void delete(long userId) {
 
+    }
+
+    @Override
+    public List<Background> getFavouriteBackgroundByUserId(int userId) {
+
+        return null;
     }
 
 }

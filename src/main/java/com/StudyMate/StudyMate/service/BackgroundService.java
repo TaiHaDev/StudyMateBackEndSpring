@@ -24,5 +24,5 @@ public interface BackgroundService {
      */
     void save(Background background);
 
-    void getFavouriteBackgroundByUserId(int userId);
+
 }

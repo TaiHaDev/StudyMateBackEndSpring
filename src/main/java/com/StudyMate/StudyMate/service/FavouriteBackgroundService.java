@@ -7,10 +7,10 @@ import java.util.List;
 
 public interface FavouriteBackgroundService {
 
-    List<Background> getAllBackgrounds(long userId);
-
     void save(FavouriteBackground favouriteBackground);
 
     void delete(long userId);
+
+    List<Background> getFavouriteBackgroundByUserId(int userId);
 
 }
