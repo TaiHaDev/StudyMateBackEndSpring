@@ -14,16 +14,18 @@ public class User {
     private String name;
     private String email;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "favourite_background")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     @JsonManagedReference
-    private List<User> userFavouriteBackgrounds;
+    private List<FavouriteBackground> userFavouriteBackgrounds;
+
+    public User(List<FavouriteBackground> userFavouriteBackgrounds) {
+        this.userFavouriteBackgrounds = userFavouriteBackgrounds;
+    }
 
     public User() {
+
     }
 
-    public List<User> getUserFavouriteBackgrounds(){
-        return userFavouriteBackgrounds;
-    }
 
     public Integer getId() {
         return id;

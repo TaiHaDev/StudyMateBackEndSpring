@@ -22,6 +22,6 @@ public class FavouriteBackgroundController {
 
     @GetMapping("/{userId}")
     public List<Background> getFavouriteBackgroundByUserId(@PathVariable Long userId) {
-        return favouriteBackgroundService.getAllBackground(userId);
+        return favouriteBackgroundService.getAllBackgrounds(userId);
     }
 }
