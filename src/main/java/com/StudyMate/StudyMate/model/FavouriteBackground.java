@@ -1,36 +1,54 @@
 package com.StudyMate.StudyMate.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.*;
+
 @Entity
 public class FavouriteBackground {
+
     @Id
-    private Integer userID;
-    @Id
-    private String backgroundID;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "userID")
+    @JsonBackReference
+    private User user;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "backgroundID")
+    @JsonBackReference
+    private Background background;
 
     public FavouriteBackground() {
     }
 
-    public FavouriteBackground(Integer userID, String backgroundID) {
-        this.userID = userID;
-        this.backgroundID = backgroundID;
+    public FavouriteBackground(User user, Background background) {
+        this.user = user;
+        this.background = background;
     }
 
-    public Integer getUserID() {
-        return userID;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserID(Integer userID) {
-        this.userID = userID;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public String getBackgroundID() {
-        return backgroundID;
+    public Background getBackground() {
+        return background;
     }
 
-    public void setBackgroundID(String backgroundID) {
-        this.backgroundID = backgroundID;
+    public void setBackground(Background background) {
+        this.background = background;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 }
