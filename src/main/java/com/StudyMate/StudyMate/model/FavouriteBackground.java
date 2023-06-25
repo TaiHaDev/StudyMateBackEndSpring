@@ -3,16 +3,16 @@ package com.StudyMate.StudyMate.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 @Entity
-public class Favourite_background {
+public class FavouriteBackground {
     @Id
     private Integer userID;
     @Id
     private String backgroundID;
 
-    public Favourite_background() {
+    public FavouriteBackground() {
     }
 
-    public Favourite_background(Integer userID, String backgroundID) {
+    public FavouriteBackground(Integer userID, String backgroundID) {
         this.userID = userID;
         this.backgroundID = backgroundID;
     }
