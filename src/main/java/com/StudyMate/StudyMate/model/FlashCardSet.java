@@ -13,6 +13,7 @@ public class FlashCardSet {
     private Integer id;
     private Integer userID;
     private String name;
+    private String description;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "flashCardSet")
     @JsonManagedReference
@@ -50,5 +51,13 @@ public class FlashCardSet {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

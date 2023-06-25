@@ -1,5 +1,6 @@
 package com.StudyMate.StudyMate.controller;
 
+import com.StudyMate.StudyMate.dto.FlashCardSetResponse;
 import com.StudyMate.StudyMate.model.FlashCardSet;
 import com.StudyMate.StudyMate.service.FlashCardSetService;
 import com.StudyMate.StudyMate.service.FlashCardSetServiceImpl;
@@ -21,11 +22,8 @@ public class FlashCardController {
 
 
     @GetMapping("/{userId}")
-    public List<FlashCardSet> getFlashCardByUserId(@PathVariable Long userId) {
+    public List<FlashCardSetResponse> getFlashCardByUserId(@PathVariable Long userId) {
         return flashCardSetService.getAllSets(userId);
     }
-
-
-
 
 }
