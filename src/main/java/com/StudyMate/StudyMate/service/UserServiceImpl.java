@@ -16,7 +16,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> getBackgroundByUserId(long userId) {
-        return userRepository.getBackgroundByUserId(userId);
+        return userRepository.getBackgroundById(userId);
     }
 
     @Override

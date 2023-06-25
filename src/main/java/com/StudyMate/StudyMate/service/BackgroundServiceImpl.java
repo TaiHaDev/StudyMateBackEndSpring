@@ -16,6 +16,7 @@ public class BackgroundServiceImpl implements BackgroundService {
     @Override
     public List<Background> getBackgroundByTheme(String themeName) {
         return backgroundRepository.getBackgroundByTheme(themeName);
+
     }
 
     @Override

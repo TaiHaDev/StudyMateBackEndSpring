@@ -9,6 +9,7 @@ public class FavouriteBackground {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userID")
     @JsonBackReference
@@ -41,5 +42,13 @@ public class FavouriteBackground {
 
     public void setBackground(Background background) {
         this.background = background;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }
