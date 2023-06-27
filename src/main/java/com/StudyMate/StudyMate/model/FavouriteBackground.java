@@ -22,9 +22,18 @@ public class FavouriteBackground {
     public FavouriteBackground() {
     }
 
-    public FavouriteBackground(User user, Background background) {
+    public FavouriteBackground(Integer id, User user, Background background) {
+        this.id = id;
         this.user = user;
         this.background = background;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public User getUser() {

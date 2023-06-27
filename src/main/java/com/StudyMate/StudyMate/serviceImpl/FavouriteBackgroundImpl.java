@@ -28,7 +28,7 @@ public class FavouriteBackgroundImpl implements FavouriteBackgroundService {
     }
 
     @Override
-    public List<Background> getFavouriteBackgroundByUserId(int userId) {
+    public List<FavouriteBackground> getFavouriteBackgroundByUserId(int userId) {
         favouriteBackgroundRepository.getFavouriteBackgroundByUserId(userId);
         return null;
     }

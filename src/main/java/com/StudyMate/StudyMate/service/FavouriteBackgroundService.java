@@ -11,6 +11,6 @@ public interface FavouriteBackgroundService {
 
     void delete(long userId);
 
-    List<Background> getFavouriteBackgroundByUserId(int userId);
+    List<FavouriteBackground> getFavouriteBackgroundByUserId(int userId);
 
 }
