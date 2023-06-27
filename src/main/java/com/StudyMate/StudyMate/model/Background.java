@@ -4,6 +4,7 @@ package com.StudyMate.StudyMate.model;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "Background")
@@ -22,7 +23,7 @@ public class Background {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "background")
     @JsonManagedReference
-    private List<FavouriteBackground> userFavouriteBackgrounds;
+    private List<FavouriteBackground> userFavouriteBackgrounds = new ArrayList<>();
 
     public Background(String URL, String name, String theme) {
         this.url = URL;
