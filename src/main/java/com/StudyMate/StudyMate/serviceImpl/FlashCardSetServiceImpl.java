@@ -1,7 +1,8 @@
-package com.StudyMate.StudyMate.service;
+package com.StudyMate.StudyMate.serviceImpl;
 
 import com.StudyMate.StudyMate.model.FlashCardSet;
 import com.StudyMate.StudyMate.repository.FlashcardSetRepository;
+import com.StudyMate.StudyMate.service.FlashCardSetService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
  * TODO: adding more security measurement to only allow same user to add flashcard and flashcard set to their account
  */
 @Service
-public class FlashCardSetServiceImpl implements FlashCardSetService{
+public class FlashCardSetServiceImpl implements FlashCardSetService {
     private final FlashcardSetRepository flashcardSetRepository;
 
     public FlashCardSetServiceImpl(FlashcardSetRepository flashcardSetRepository) {

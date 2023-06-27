@@ -3,7 +3,7 @@ package com.StudyMate.StudyMate.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
-@Entity
+@Entity(name = "FavouriteBackground")
 public class FavouriteBackground {
 
     @Id
@@ -15,7 +15,7 @@ public class FavouriteBackground {
     private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "backgroundID")
+    @JoinColumn(name = "backgroundID", nullable = false)
     @JsonBackReference
     private Background background;
 
