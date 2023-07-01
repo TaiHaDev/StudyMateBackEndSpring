@@ -1,9 +1,13 @@
 package com.StudyMate.StudyMate.model;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
-@Entity
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity(name = "Background")
 public class Background {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,6 +21,10 @@ public class Background {
     @Column(nullable = false)
     private String pictureURL;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "background")
+    @JsonManagedReference
+    private List<FavouriteBackground> userFavouriteBackgrounds = new ArrayList<>();
+
     public Background(String URL, String name, String theme) {
         this.url = URL;
         this.name = name;
@@ -26,6 +34,30 @@ public class Background {
     public Background() {
     }
 
+    public Background(Integer id, String url, String name, String theme, String pictureURL, List<FavouriteBackground> userFavouriteBackgrounds) {
+        this.id = id;
+        this.url = url;
+        this.name = name;
+        this.theme = theme;
+        this.pictureURL = pictureURL;
+        this.userFavouriteBackgrounds = userFavouriteBackgrounds;
+    }
+
+    public String getPictureURL() {
+        return pictureURL;
+    }
+
+    public void setPictureURL(String pictureURL) {
+        this.pictureURL = pictureURL;
+    }
+
+    public List<FavouriteBackground> getUserFavouriteBackgrounds() {
+        return userFavouriteBackgrounds;
+    }
+
+    public void setUserFavouriteBackgrounds(List<FavouriteBackground> userFavouriteBackgrounds) {
+        this.userFavouriteBackgrounds = userFavouriteBackgrounds;
+    }
 
     public String getTheme() {
         return theme;

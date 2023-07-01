@@ -2,8 +2,7 @@ package com.StudyMate.StudyMate.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-
-@Entity
+@Entity(name = "FlashCard")
 public class FlashCard {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
