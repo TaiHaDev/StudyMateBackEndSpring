@@ -19,8 +19,10 @@ public class UserServiceImpl implements UserService {
         return userRepository.getBackgroundById(userId);
     }
 
+
+
     @Override
-    public void delete(long userId) {
+    public void delete(int userId) {
         userRepository.deleteById(userId);
     }
 

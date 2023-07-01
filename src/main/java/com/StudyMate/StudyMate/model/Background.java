@@ -91,13 +91,7 @@ public class Background {
         this.name = name;
     }
 
-    public String getPictureURL() {
-        return pictureURL;
-    }
 
-    public void setPictureURL(String pictureURL) {
-        this.pictureURL = pictureURL;
-    }
 
     @Override
     public String toString() {
