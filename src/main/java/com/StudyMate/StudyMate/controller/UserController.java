@@ -19,7 +19,7 @@ public class UserController {
     public List<User> getBackgroundByUserId(@PathVariable int userId) {
         return userService.getBackgroundByUserId(userId);
     }
-    @PostMapping()
+    @PostMapping("/save")
     public void addNewUser(@RequestBody User users) {
         userService.save(users);
     }

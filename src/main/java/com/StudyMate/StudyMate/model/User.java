@@ -14,14 +14,12 @@ public class User {
 
     private Integer id;
 
+    @Column(name = "name", columnDefinition = "TEXT")
+    private String name;
+
     @Column(name = "subscription", columnDefinition = "TEXT")
     private String subscription;
 
-    @Column(name = "first_name", nullable = false, columnDefinition = "TEXT")
-    private String first_name;
-
-    @Column(name = "last_name", nullable = false, columnDefinition = "TEXT")
-    private String last_name;
 
     @Column(name = "email", nullable = false, columnDefinition = "TEXT")
     private String email;
@@ -30,16 +28,15 @@ public class User {
     private List<FavouriteBackground> userFavouriteBackgrounds = new ArrayList<>();
 
 
-    public User(Integer id, String subscription, String first_name, String last_name, String email) {
-        this.id = id;
-        this.subscription = subscription;
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.email = email;
+    public User() {
     }
 
-    public User() {
-
+    public User(Integer id, String name, String subscription, String email, List<FavouriteBackground> userFavouriteBackgrounds) {
+        this.id = id;
+        this.name = name;
+        this.subscription = subscription;
+        this.email = email;
+        this.userFavouriteBackgrounds = userFavouriteBackgrounds;
     }
 
     public Integer getId() {
@@ -50,6 +47,14 @@ public class User {
         this.id = id;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getSubscription() {
         return subscription;
     }
@@ -58,27 +63,19 @@ public class User {
         this.subscription = subscription;
     }
 
-    public String getFirst_name() {
-        return first_name;
-    }
-
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
-    }
-
-    public String getLast_name() {
-        return last_name;
-    }
-
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
-    }
-
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<FavouriteBackground> getUserFavouriteBackgrounds() {
+        return userFavouriteBackgrounds;
+    }
+
+    public void setUserFavouriteBackgrounds(List<FavouriteBackground> userFavouriteBackgrounds) {
+        this.userFavouriteBackgrounds = userFavouriteBackgrounds;
     }
 }

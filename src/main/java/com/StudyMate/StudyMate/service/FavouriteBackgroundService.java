@@ -6,11 +6,11 @@ import com.StudyMate.StudyMate.model.FavouriteBackground;
 import java.util.List;
 
 public interface FavouriteBackgroundService {
+    List<FavouriteBackground> getFavouriteBackgroundByUserId(int userId);
 
     void save(FavouriteBackground favouriteBackground);
 
-    void delete(long userId);
+    void delete(long favouriteBackgroundId);
 
-    List<FavouriteBackground> getFavouriteBackgroundByUserId(int userId);
 
 }
