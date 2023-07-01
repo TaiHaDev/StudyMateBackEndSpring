@@ -23,7 +23,7 @@ public class UserController {
     public void addNewUser(@RequestBody User users) {
         userService.save(users);
     }
-    @DeleteMapping("/{userId}")
+    @DeleteMapping("/delete/{userId}")
     public void deleteUserById(@PathVariable int userId) {
         userService.delete(userId);
     }
