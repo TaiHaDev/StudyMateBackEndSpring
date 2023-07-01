@@ -1,9 +1,10 @@
-package com.StudyMate.StudyMate.service;
+package com.StudyMate.StudyMate.serviceImpl;
 
 import com.StudyMate.StudyMate.dto.FlashCardSetResponse;
 import com.StudyMate.StudyMate.model.FlashCardSet;
 import com.StudyMate.StudyMate.repository.FlashcardRepository;
 import com.StudyMate.StudyMate.repository.FlashcardSetRepository;
+import com.StudyMate.StudyMate.service.FlashCardSetService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

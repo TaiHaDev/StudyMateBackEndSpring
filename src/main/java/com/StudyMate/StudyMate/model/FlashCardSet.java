@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 
 import java.util.List;
 
-@Entity
+@Entity(name = "FlashCardSet")
 public class FlashCardSet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

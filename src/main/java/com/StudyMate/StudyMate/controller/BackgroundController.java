@@ -26,5 +26,5 @@ public class BackgroundController {
     public void deleteBackgroundById(@PathVariable long backgroundId) {
         backgroundService.delete(backgroundId);
     }
-
 }
+

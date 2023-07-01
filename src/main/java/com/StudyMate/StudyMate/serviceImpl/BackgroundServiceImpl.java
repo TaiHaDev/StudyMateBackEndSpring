@@ -1,7 +1,8 @@
-package com.StudyMate.StudyMate.service;
+package com.StudyMate.StudyMate.serviceImpl;
 
 import com.StudyMate.StudyMate.model.Background;
 import com.StudyMate.StudyMate.repository.BackgroundRepository;
+import com.StudyMate.StudyMate.service.BackgroundService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
