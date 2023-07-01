@@ -8,4 +8,6 @@ import java.util.List;
 
 public interface FavouriteBackgroundRepository extends JpaRepository<FavouriteBackground, Long> {
     List<FavouriteBackground> getFavouriteBackgroundByUserId(int userId);
+
+    void deleteByUserIdAndBackgroundId(int userId, long backgroundId);
 }

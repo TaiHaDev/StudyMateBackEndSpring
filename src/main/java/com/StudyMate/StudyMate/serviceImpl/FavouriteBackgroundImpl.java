@@ -1,6 +1,5 @@
 package com.StudyMate.StudyMate.serviceImpl;
 
-import com.StudyMate.StudyMate.model.Background;
 import com.StudyMate.StudyMate.model.FavouriteBackground;
 import com.StudyMate.StudyMate.repository.FavouriteBackgroundRepository;
 import com.StudyMate.StudyMate.service.FavouriteBackgroundService;
@@ -30,6 +29,11 @@ public class FavouriteBackgroundImpl implements FavouriteBackgroundService {
     @Override
     public List<FavouriteBackground> getFavouriteBackgroundByUserId(int userId) {
         return favouriteBackgroundRepository.getFavouriteBackgroundByUserId(userId);
+    }
+
+    @Override
+    public void deleteFavouriteBackgroundByUserIdAndBackgroundId(int userId, long backgroundId) {
+        favouriteBackgroundRepository.deleteByUserIdAndBackgroundId(userId, backgroundId);
     }
 
 }

@@ -27,8 +27,8 @@ public class FavouriteBackgroundController {
         favouriteBackgroundService.save(favouriteBackground);
     }
 
-    @DeleteMapping("/delete/{favouriteBackgroundId}")
-    public void deleteFavouriteBackgroundById(@PathVariable long favouriteBackgroundId) {
-        favouriteBackgroundService.delete(favouriteBackgroundId);
+    @DeleteMapping("/delete/{userId}/{favouriteBackgroundId}")
+    public void deleteFavouriteBackgroundById(@PathVariable int userId ,@PathVariable long favouriteBackgroundId) {
+        favouriteBackgroundService.deleteFavouriteBackgroundByUserIdAndBackgroundId(userId,favouriteBackgroundId);
     }
 }

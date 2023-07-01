@@ -13,4 +13,5 @@ public interface FavouriteBackgroundService {
     void delete(long favouriteBackgroundId);
 
 
+    void deleteFavouriteBackgroundByUserIdAndBackgroundId(int userId, long backgroundId);
 }
