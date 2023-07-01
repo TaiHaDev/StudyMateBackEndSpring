@@ -1,6 +1,8 @@
 package com.StudyMate.StudyMate.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 @Entity(name = "FavouriteBackground")
@@ -9,14 +11,16 @@ public class FavouriteBackground {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userID")
     @JsonBackReference
+    @JsonIgnore
     private User user;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     @JoinColumn(name = "backgroundID", nullable = false)
-    @JsonBackReference
+    @JsonManagedReference
     private Background background;
 
     public FavouriteBackground() {
@@ -51,4 +55,6 @@ public class FavouriteBackground {
     public void setBackground(Background background) {
         this.background = background;
     }
+
+
 }

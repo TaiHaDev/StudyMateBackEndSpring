@@ -1,8 +1,7 @@
-package com.StudyMate.StudyMate.serviceImpl;
+package com.StudyMate.StudyMate.service;
 
 import com.StudyMate.StudyMate.model.User;
 import com.StudyMate.StudyMate.repository.UserRepository;
-import com.StudyMate.StudyMate.service.UserService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,6 +18,8 @@ public class UserServiceImpl implements UserService {
     public List<User> getBackgroundByUserId(int userId) {
         return userRepository.getBackgroundById(userId);
     }
+
+
 
     @Override
     public void delete(int userId) {

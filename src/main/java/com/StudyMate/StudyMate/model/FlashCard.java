@@ -11,10 +11,17 @@ public class FlashCard {
     @JoinColumn(name = "setID")
     @JsonBackReference
     private FlashCardSet flashCardSet;
-    private String content;
+    private String front;
+    private String back;
     private String date;
 
     public FlashCard() {
+    }
+
+    public FlashCard(Integer id, String front, String back) {
+        this.id = id;
+        this.front = front;
+        this.back = back;
     }
 
     public Integer getId() {
@@ -33,12 +40,20 @@ public class FlashCard {
         this.flashCardSet = flashCardSet;
     }
 
-    public String getContent() {
-        return content;
+    public String getFront() {
+        return front;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setFront(String front) {
+        this.front = front;
+    }
+
+    public String getBack() {
+        return back;
+    }
+
+    public void setBack(String back) {
+        this.back = back;
     }
 
     public String getDate() {

@@ -11,3 +11,4 @@ public interface FavouriteBackgroundRepository extends JpaRepository<FavouriteBa
 
     void deleteByUserIdAndBackgroundId(int userId, long backgroundId);
 }
+

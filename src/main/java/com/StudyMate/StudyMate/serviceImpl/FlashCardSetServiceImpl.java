@@ -1,6 +1,8 @@
 package com.StudyMate.StudyMate.serviceImpl;
 
+import com.StudyMate.StudyMate.dto.FlashCardSetResponse;
 import com.StudyMate.StudyMate.model.FlashCardSet;
+import com.StudyMate.StudyMate.repository.FlashcardRepository;
 import com.StudyMate.StudyMate.repository.FlashcardSetRepository;
 import com.StudyMate.StudyMate.service.FlashCardSetService;
 import org.springframework.stereotype.Service;
@@ -13,15 +15,21 @@ import java.util.List;
 @Service
 public class FlashCardSetServiceImpl implements FlashCardSetService {
     private final FlashcardSetRepository flashcardSetRepository;
+    private final FlashcardRepository flashcardRepository;
 
-    public FlashCardSetServiceImpl(FlashcardSetRepository flashcardSetRepository) {
+    public FlashCardSetServiceImpl(FlashcardSetRepository flashcardSetRepository, FlashcardRepository flashcardRepository) {
         this.flashcardSetRepository = flashcardSetRepository;
+        this.flashcardRepository = flashcardRepository;
     }
 
 
     @Override
-    public List<FlashCardSet> getAllSets(long userId) {
-        return flashcardSetRepository.findFlashCardSetById(userId);
+    public List<FlashCardSetResponse> getAllSets(long userId) {
+        List<FlashCardSet> flashCardSets = flashcardSetRepository.findFlashCardSetById(userId);
+        return flashCardSets.stream()
+                .map(flashCardSet ->
+                        new FlashCardSetResponse(flashCardSet.getId(), flashCardSet.getName(), flashCardSet.getDescription(), flashcardRepository.countAllById(flashCardSet.getUserID())))
+                .toList();
     }
 
     @Override

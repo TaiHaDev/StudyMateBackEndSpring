@@ -23,6 +23,4 @@ public interface BackgroundService {
      * @param background
      */
     void save(Background background);
-
-
 }

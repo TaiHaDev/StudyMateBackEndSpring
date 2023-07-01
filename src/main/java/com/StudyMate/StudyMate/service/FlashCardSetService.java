@@ -1,5 +1,6 @@
 package com.StudyMate.StudyMate.service;
 
+import com.StudyMate.StudyMate.dto.FlashCardSetResponse;
 import com.StudyMate.StudyMate.model.FlashCardSet;
 
 import java.util.List;
@@ -10,7 +11,7 @@ public interface FlashCardSetService {
      * @param userId current user id
      * @return all flash card sets of the current user
      */
-    List<FlashCardSet> getAllSets(long userId);
+    List<FlashCardSetResponse> getAllSets(long userId);
     /**
      *
      * @param flashCardSet
