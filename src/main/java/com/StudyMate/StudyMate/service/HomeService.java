@@ -1,4 +1,4 @@
-package com.StudyMate.StudyMate.service;
-
-public interface HomeService  {
-}
+//package com.StudyMate.StudyMate.service;
+//
+//public interface HomeService  {
+//}
