@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -41,7 +42,9 @@ public class User {
     @OneToMany (mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<FavouriteBackground> userFavouriteBackgrounds = new ArrayList<>();
 
-
+    public UserDetails asUser() {
+        return new org.springframework.security.core.userdetails.User(email, password, authorities);
+    }
     public User(Integer id, String subscription, String first_name, String last_name, String email) {
         this.id = id;
         this.subscription = subscription;
@@ -117,4 +120,6 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+
+
 }
