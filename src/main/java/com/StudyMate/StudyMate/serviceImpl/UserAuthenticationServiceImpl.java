@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserAuthenticationServiceImpl implements UserAuthenticationService {
+
+
     UserAuthenticationRepository userAuthenticationRepository;
     PasswordEncoder passwordEncoder;
     @Autowired
@@ -19,6 +21,10 @@ public class UserAuthenticationServiceImpl implements UserAuthenticationService 
 
     public UserAuthenticationServiceImpl(UserAuthenticationRepository userAuthenticationRepository) {
         this.userAuthenticationRepository = userAuthenticationRepository;
+    }
+    @Override
+    public User getUserDetails(String email) {
+        return userAuthenticationRepository.findUserByEmail(email);
     }
 
     @Override

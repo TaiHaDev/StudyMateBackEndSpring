@@ -8,6 +8,7 @@ import java.util.List;
 
 public interface UserRepository extends JpaRepository<User, Long> {
     List<User> getBackgroundById(long userId);
+    User findUserByEmail(String email);
 
     void deleteById(int userId);
 }
