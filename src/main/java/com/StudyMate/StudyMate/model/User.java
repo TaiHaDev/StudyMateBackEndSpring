@@ -2,9 +2,13 @@ package com.StudyMate.StudyMate.model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity(name = "User")
 public class User {
@@ -26,6 +30,14 @@ public class User {
     @Column(name = "email", nullable = false, columnDefinition = "TEXT")
     private String email;
 
+    private String password;
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<GrantedAuthority> authorities = new ArrayList<>();
+
+
+
+
+
     @OneToMany (mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<FavouriteBackground> userFavouriteBackgrounds = new ArrayList<>();
 
@@ -40,6 +52,30 @@ public class User {
 
     public User() {
 
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public List<GrantedAuthority> getAuthorities() {
+        return authorities;
+    }
+
+    public void setAuthorities(String... authorities) {
+        this.authorities = Arrays.stream(authorities).map(authority -> new SimpleGrantedAuthority(authority)).collect(Collectors.toList());
+    }
+
+    public List<FavouriteBackground> getUserFavouriteBackgrounds() {
+        return userFavouriteBackgrounds;
+    }
+
+    public void setUserFavouriteBackgrounds(List<FavouriteBackground> userFavouriteBackgrounds) {
+        this.userFavouriteBackgrounds = userFavouriteBackgrounds;
     }
 
     public Integer getId() {
