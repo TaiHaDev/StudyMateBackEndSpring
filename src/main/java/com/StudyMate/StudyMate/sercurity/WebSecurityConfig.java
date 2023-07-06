@@ -8,6 +8,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
@@ -26,12 +28,14 @@ public class WebSecurityConfig {
      */
     @Bean
     SecurityFilterChain configureSecurity(HttpSecurity http) throws Exception {
-        http.securityContext(httpSecuritySecurityContextConfigurer -> httpSecuritySecurityContextConfigurer.requireExplicitSave(false))
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.ALWAYS));
-        http.cors(Customizer.withDefaults())
+        http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+        http.csrf(csrf -> csrf.disable())
+                .cors(Customizer.withDefaults())
                 .authorizeHttpRequests((authorize) -> authorize
-                        .requestMatchers("/**").permitAll()
-                );
+                        .requestMatchers("/**").authenticated())
+                .httpBasic(Customizer.withDefaults())
+                .formLogin(Customizer.withDefaults())
+                ;
         return http.build();
     }
 
@@ -48,5 +52,9 @@ public class WebSecurityConfig {
     @Bean
     UserDetailsService userDetailsService(UserAuthenticationRepository repository) {
         return email -> repository.findUserByEmail(email).asUser();
+    }
+    @Bean
+    PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 }
