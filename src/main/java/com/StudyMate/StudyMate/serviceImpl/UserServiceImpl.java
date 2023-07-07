@@ -2,6 +2,7 @@ package com.StudyMate.StudyMate.service;
 
 import com.StudyMate.StudyMate.model.User;
 import com.StudyMate.StudyMate.repository.UserRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,7 +21,7 @@ public class UserServiceImpl implements UserService {
     }
 
 
-
+    @Transactional
     @Override
     public void delete(int userId) {
         userRepository.deleteById(userId);
