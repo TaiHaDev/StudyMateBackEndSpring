@@ -1,9 +1,10 @@
 package com.StudyMate.StudyMate.sercurity;
 
-import com.StudyMate.StudyMate.model.User;
 import com.StudyMate.StudyMate.repository.UserAuthenticationRepository;
+import com.StudyMate.StudyMate.sercurity.filter.GoogleJWTValidatorFilter;
 import com.StudyMate.StudyMate.sercurity.filter.JWTGeneratorFilter;
 import com.StudyMate.StudyMate.sercurity.filter.JWTValidatorFilter;
+import com.StudyMate.StudyMate.service.UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -26,12 +27,13 @@ import java.util.List;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig {
+
     /**
      * TODO: the current authorisation rules are temporary (it accepts all paths), update it later to require authorisation
      * to some paths
      */
     @Bean
-    SecurityFilterChain configureSecurity(HttpSecurity http) throws Exception {
+    SecurityFilterChain configureSecurity(HttpSecurity http, UserAuthenticationRepository userAuthenticationRepository, GoogleTokenVerifierService tokenVerifierService) throws Exception {
         http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
         http.csrf(csrf -> csrf.disable())
                 .cors(Customizer.withDefaults())
@@ -40,7 +42,9 @@ public class WebSecurityConfig {
                 .httpBasic(Customizer.withDefaults())
                 .formLogin(Customizer.withDefaults())
                 .addFilterBefore(new JWTValidatorFilter(), BasicAuthenticationFilter.class)
-                .addFilterAfter(new JWTGeneratorFilter(), BasicAuthenticationFilter.class);
+                .addFilterAfter(new JWTGeneratorFilter(), BasicAuthenticationFilter.class)
+                .addFilterBefore(new GoogleJWTValidatorFilter(tokenVerifierService, userAuthenticationRepository), BasicAuthenticationFilter.class);
+
 
         return http.build();
     }
@@ -61,13 +65,7 @@ public class WebSecurityConfig {
 
     @Bean
     UserDetailsService userDetailsService(UserAuthenticationRepository repository) {
-        return username -> {
-            System.out.println(repository);
-            System.out.println("email: " + username);
-            User user = repository.findUserByEmail(username);
-            System.out.println(user);
-            return user.asUser();
-        };
+        return email -> repository.findUserByEmail(email).asUser();
     }
     @Bean
     PasswordEncoder passwordEncoder() {

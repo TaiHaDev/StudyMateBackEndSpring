@@ -30,7 +30,4 @@ public class AuthenticationController {
         return userAuthenticationService.getUserDetails(authentication.getName());
     }
 
-
-
-
 }
