@@ -36,20 +36,22 @@ public class GoogleJWTValidatorFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         String googleJwt = request.getHeader("google");
-        try {
-            GoogleIdToken.Payload verify = tokenVerifierService.verify(googleJwt);
-            String userEmail = verify.getEmail();
-            User user = userAuthenticationRepository.findUserByEmail(userEmail);
-            if (user != null) {
-                Authentication auth = new UsernamePasswordAuthenticationToken(user.getEmail(), null,
-                        user.getAuthorities());
-                SecurityContextHolder.getContext().setAuthentication(auth);
-                logger.info("Successfully logged in with google jwt token");
-            }
+        if (googleJwt != null) {
+            try {
+                GoogleIdToken.Payload verify = tokenVerifierService.verify(googleJwt);
+                String userEmail = verify.getEmail();
+                User user = userAuthenticationRepository.findUserByEmail(userEmail);
+                if (user != null) {
+                    Authentication auth = new UsernamePasswordAuthenticationToken(user.getEmail(), null,
+                            user.getAuthorities());
+                    SecurityContextHolder.getContext().setAuthentication(auth);
+                    logger.info("Successfully logged in with google jwt token");
+                }
 
-        } catch (GeneralSecurityException e) {
-            logger.info("Invalid google jwt token");
-            throw new RuntimeException(e);
+            } catch (GeneralSecurityException e) {
+                logger.info("Invalid google jwt token");
+                throw new RuntimeException(e);
+            }
         }
         filterChain.doFilter(request, response);
     }

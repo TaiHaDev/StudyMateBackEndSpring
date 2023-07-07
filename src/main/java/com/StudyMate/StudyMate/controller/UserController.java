@@ -15,10 +15,10 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/{userId}")
-    public List<User> getBackgroundByUserId(@PathVariable int userId) {
-        return userService.getBackgroundByUserId(userId);
-    }
+//    @GetMapping("/{userId}")
+//    public List<User> getBackgroundByUserId(@PathVariable int userId) {
+//        return userService.getBackgroundByUserId(userId);
+//    }
     @PostMapping()
     public void addNewUser(@RequestBody User users) {
         userService.save(users);

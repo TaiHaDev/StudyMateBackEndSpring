@@ -28,17 +28,17 @@ import java.util.List;
 @EnableWebSecurity
 public class WebSecurityConfig {
 
-    /**
-     * TODO: the current authorisation rules are temporary (it accepts all paths), update it later to require authorisation
-     * to some paths
-     */
+
     @Bean
     SecurityFilterChain configureSecurity(HttpSecurity http, UserAuthenticationRepository userAuthenticationRepository, GoogleTokenVerifierService tokenVerifierService) throws Exception {
         http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
         http.csrf(csrf -> csrf.disable())
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests((authorize) -> authorize
-                        .requestMatchers("/**").authenticated())
+                        .requestMatchers("/authenticate", "/favouriteBackground/**", "/flashcard/**", "/flashcardSet/**").authenticated()
+                        .requestMatchers("/user/**").hasRole("ADMIN")
+                        .anyRequest().permitAll()
+                )
                 .httpBasic(Customizer.withDefaults())
                 .formLogin(Customizer.withDefaults())
                 .addFilterBefore(new JWTValidatorFilter(), BasicAuthenticationFilter.class)
