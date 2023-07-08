@@ -1,6 +1,7 @@
 package com.StudyMate.StudyMate.service;
 
 import com.StudyMate.StudyMate.model.User;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 

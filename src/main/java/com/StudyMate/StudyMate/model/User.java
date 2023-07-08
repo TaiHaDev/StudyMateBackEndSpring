@@ -1,12 +1,7 @@
 package com.StudyMate.StudyMate.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,10 +23,6 @@ public class User {
 
     @Column(name = "email", nullable = false, columnDefinition = "TEXT")
     private String email;
-    @Column(nullable = false)
-    private String password;
-    @ElementCollection(fetch = FetchType.EAGER)
-    private List<GrantedAuthority> authorities = new ArrayList<>();
 
     @OneToMany (mappedBy = "user", cascade = CascadeType.ALL)
     @JsonBackReference

@@ -15,15 +15,15 @@ public class UserController {
         this.userService = userService;
     }
 
-//    @GetMapping("/{userId}")
-//    public List<User> getBackgroundByUserId(@PathVariable int userId) {
-//        return userService.getBackgroundByUserId(userId);
-//    }
-    @PostMapping()
+    @GetMapping("/{userId}")
+    public List<User> getBackgroundByUserId(@PathVariable int userId) {
+        return userService.getBackgroundByUserId(userId);
+    }
+    @PostMapping("/save")
     public void addNewUser(@RequestBody User users) {
         userService.save(users);
     }
-    @DeleteMapping("/{userId}")
+    @DeleteMapping("/delete/{userId}")
     public void deleteUserById(@PathVariable int userId) {
         userService.delete(userId);
     }
