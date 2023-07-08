@@ -1,5 +1,6 @@
 package com.StudyMate.StudyMate.controller;
 
+import com.StudyMate.StudyMate.dto.FavouriteBackgroundRequest;
 import com.StudyMate.StudyMate.model.Background;
 import com.StudyMate.StudyMate.model.FavouriteBackground;
 import com.StudyMate.StudyMate.model.FlashCardSet;
@@ -23,7 +24,7 @@ public class FavouriteBackgroundController {
         return favouriteBackgroundService.getFavouriteBackgroundByUserId(userId);
     }
     @PostMapping("/add")
-    public void addNewFavouriteBackground(@RequestBody FavouriteBackground favouriteBackground) {
+    public void addNewFavouriteBackground(@RequestBody FavouriteBackgroundRequest favouriteBackground) {
         favouriteBackgroundService.save(favouriteBackground);
     }
 

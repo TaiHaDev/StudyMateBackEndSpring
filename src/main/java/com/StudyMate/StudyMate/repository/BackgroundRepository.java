@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface BackgroundRepository extends JpaRepository<Background, Long> {
     List<Background> getBackgroundByTheme(String themeName);
+
+    Background getBackgroundById(int id);
 }
