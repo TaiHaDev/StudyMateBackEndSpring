@@ -38,7 +38,7 @@ public class JWTGeneratorFilter extends OncePerRequestFilter {
                     .claim("username", authentication.getName())
                     .claim("authorities", authentication.getAuthorities())
                     .setIssuedAt(new Date())
-                    .setExpiration(new Date(new Date().getTime() + 3000000))
+                    .setExpiration(new Date(new Date().getTime() + 300000000))
                     .signWith(key).compact();
             response.setHeader(SMConstants.JWT_HEADER, jwt);
             LOG.info("successfully created JWT token");

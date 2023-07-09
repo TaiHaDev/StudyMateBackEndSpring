@@ -8,6 +8,7 @@ import com.StudyMate.StudyMate.repository.BackgroundRepository;
 import com.StudyMate.StudyMate.repository.FavouriteBackgroundRepository;
 import com.StudyMate.StudyMate.repository.UserRepository;
 import com.StudyMate.StudyMate.service.FavouriteBackgroundService;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,11 +29,14 @@ public class FavouriteBackgroundImpl implements FavouriteBackgroundService {
     @Override
     public void save(FavouriteBackgroundRequest favouriteBackground) {
         FavouriteBackground fb = new FavouriteBackground();
-        User user = userRepository.getBackgroundById(favouriteBackground.userID()).get(0);
-        Background bg = backgroundRepository.getBackgroundById(favouriteBackground.backgroundID());
-        fb.setUser(user);
-        fb.setBackground(bg);
-        favouriteBackgroundRepository.save(fb);
+        User user = userRepository.getUserById(favouriteBackground.userId());
+        if (user != null) {
+            Background bg = backgroundRepository.getBackgroundById(favouriteBackground.backgroundId());
+            fb.setUser(user);
+            fb.setBackground(bg);
+            favouriteBackgroundRepository.save(fb);
+        }
+
     }
 
     @Override
@@ -44,7 +48,7 @@ public class FavouriteBackgroundImpl implements FavouriteBackgroundService {
     public List<FavouriteBackground> getFavouriteBackgroundByUserId(int userId) {
         return favouriteBackgroundRepository.getFavouriteBackgroundByUserId(userId);
     }
-
+    @Transactional
     @Override
     public void deleteFavouriteBackgroundByUserIdAndBackgroundId(int userId, long backgroundId) {
         favouriteBackgroundRepository.deleteByUserIdAndBackgroundId(userId, backgroundId);

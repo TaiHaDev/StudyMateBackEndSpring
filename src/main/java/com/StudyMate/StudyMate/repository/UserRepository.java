@@ -10,4 +10,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
     List<User> getBackgroundById(long userId);
 
     void deleteById(int userId);
+
+    User getUserById(int userID);
 }

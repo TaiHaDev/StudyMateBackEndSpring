@@ -35,7 +35,7 @@ public class WebSecurityConfig {
         http.csrf(csrf -> csrf.disable())
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests((authorize) -> authorize
-                        .requestMatchers("/authenticate", "/favouriteBackground/**", "/flashcard/**", "/flashcardSet/**").authenticated()
+                        .requestMatchers("/authenticate", "/favouriteBackground/add", "/favouriteBackground/delete/**", "/flashcard/**", "/flashcardSet/**").authenticated()
                         .requestMatchers("/user/**").hasRole("ADMIN")
                         .anyRequest().permitAll()
                 )
@@ -53,7 +53,7 @@ public class WebSecurityConfig {
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(List.of("http://localhost:3000"));
-        configuration.setAllowedMethods(Arrays.asList("GET", "POST"));
+        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "DELETE"));
         configuration.setAllowCredentials(true);
         configuration.setAllowedHeaders(Collections.singletonList("*"));
         configuration.setExposedHeaders(List.of("Authorization")); // tell the front-end to except the response with Authorization in header
