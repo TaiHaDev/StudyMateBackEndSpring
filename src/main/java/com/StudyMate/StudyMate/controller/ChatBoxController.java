@@ -1,6 +1,7 @@
 package com.StudyMate.StudyMate.controller;
 
 
+import com.StudyMate.StudyMate.dto.ChatBotResponse;
 import com.StudyMate.StudyMate.dto.ChatGPTRequest;
 import com.StudyMate.StudyMate.dto.ChatGPTResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,9 +27,13 @@ public class ChatBoxController {
 
 
     @GetMapping("/chat")
-    public String chat(@RequestParam("prompt") String prompt){
-        ChatGPTRequest request=new ChatGPTRequest(model, prompt);
-        ChatGPTResponse chatGPTResponse = template.patchForObject(apiURL, request, ChatGPTResponse.class);
-        return chatGPTResponse.getChoices().get(0).getMessage().getContent();
+    public ChatBotResponse chat(@RequestParam("prompt") String prompt){
+        try {
+            ChatGPTRequest request=new ChatGPTRequest(model, prompt);
+            ChatGPTResponse chatGPTResponse = template.postForObject(apiURL, request, ChatGPTResponse.class);
+            return new ChatBotResponse(chatGPTResponse.getChoices().get(0).getMessage().getContent());
+        } catch (Exception e) {
+            return new ChatBotResponse("helloooooo");
+        }
     }
 }
