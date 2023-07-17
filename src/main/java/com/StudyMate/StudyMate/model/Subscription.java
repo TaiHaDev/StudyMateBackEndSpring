@@ -12,16 +12,16 @@ public class Subscription {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userID")
     @JsonBackReference
-    private User userID;
+    private User user;
     private String type;
     private String period;
 
     public Subscription() {
     }
 
-    public Subscription(Integer id, User userID, String type, String period) {
+    public Subscription(Integer id, User user, String type, String period) {
         this.id = id;
-        this.userID = userID;
+        this.user = user;
         this.type = type;
         this.period = period;
     }
@@ -34,12 +34,12 @@ public class Subscription {
         this.id = id;
     }
 
-    public User getUserID() {
-        return userID;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserID(User userID) {
-        this.userID = userID;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getType() {

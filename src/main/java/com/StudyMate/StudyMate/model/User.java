@@ -27,9 +27,8 @@ public class User {
     @OneToMany (mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<FavouriteBackground> userFavouriteBackgrounds = new ArrayList<>();
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    @JsonManagedReference
-    private List<Subscription> userSubscription = new ArrayList<>();
+    @OneToMany (mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Subscription> userSubscriptions = new ArrayList<>();
 
     public User() {
     }

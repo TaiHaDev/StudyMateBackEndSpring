@@ -1,0 +1,10 @@
+package com.StudyMate.StudyMate.repository;
+
+import com.StudyMate.StudyMate.model.Subscription;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
+
+public interface SubscriptionRepository extends JpaRepository<Subscription, Integer> {
+    List<Subscription> getSubscriptionByUserId(Integer userId);
+}
