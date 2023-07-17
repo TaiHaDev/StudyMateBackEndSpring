@@ -21,13 +21,12 @@ public class WebSecurityConfig {
      * to some paths
      */
     @Bean
-    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        return http
-                .authorizeHttpRequests(auth -> {
-                     auth.requestMatchers("/").permitAll();
-                } )
-                .formLogin(Customizer.withDefaults())
-                .build();
+    SecurityFilterChain configureSecurity(HttpSecurity http) throws Exception {
+        http.cors(Customizer.withDefaults())
+                .authorizeHttpRequests((authorize) -> authorize
+                        .requestMatchers("/**").permitAll()
+                );
+        return http.build();
     }
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
