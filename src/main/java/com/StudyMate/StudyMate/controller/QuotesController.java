@@ -14,6 +14,12 @@ public class QuotesController {
     public QuotesController(QuotesService quotesService) {
         this.quotesService = quotesService;
     }
+    @GetMapping("")
+    public Quotes getRandomQuote() {
+        Quotes randomQuote = quotesService.getRandomQuote();
+        System.out.println(randomQuote);
+        return randomQuote;
+    }
 
     @GetMapping("/{quotesId}")
     public List<Quotes> getQuotesById (@PathVariable int quotesId){

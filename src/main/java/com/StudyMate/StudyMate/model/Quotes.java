@@ -12,12 +12,23 @@ public class Quotes {
     @Column(name = "content", columnDefinition = "TEXT")
     private String content;
 
+    @Column()
+    private String author;
+
     public Quotes() {
     }
 
     public Quotes(Integer id, String content) {
         this.id = id;
         this.content = content;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     public Integer getId() {

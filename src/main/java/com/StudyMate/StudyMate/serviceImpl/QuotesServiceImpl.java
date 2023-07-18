@@ -30,4 +30,9 @@ public class QuotesServiceImpl implements QuotesService {
     public void save(Quotes quotes){
         quotesRepository.save(quotes);
     }
+
+    @Override
+    public Quotes getRandomQuote() {
+        return quotesRepository.getRandomQuote();
+    }
 }
